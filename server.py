@@ -1,15 +1,13 @@
 import socket
 
-
-
-
+HEADERSIZE = 10
 
 # A socket is an endpoint that recieves data
 # socket object
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Tuple of IP and Port
-s.bind((socket.gethostname(), 1234))
+s.bind((socket.gethostname(), 1235))
 s.listen(5)
 
 while True:
@@ -19,8 +17,8 @@ while True:
 
     msg = "Welcome to the Server"
     # Fixed length header
-    msg = print(f'{len(msg): < 10}' + msg)
+    msg = f'{len(msg): < {HEADERSIZE}}' + msg
 
     # send information to client socket
-    clientsocket.send(bytes("Welcome to the server", "utf-8"))
-    clientsocket.close()
+    clientsocket.send(bytes(msg, "utf-8"))
+   
