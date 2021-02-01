@@ -58,7 +58,7 @@ while True:
                 del clients[notified_socket]
                 continue
             user = clients[notified_socket]
-            print(f"recieved message from {user['data'].decode('utf-8')}: {messsage['data'].decode('utf-8')}")
+            print(f"recieved message from {user['data'].decode('utf-8')}: {message['data'].decode('utf-8')}")
 
             for client_socket in clients:
                 if client_socket != notified_socket:

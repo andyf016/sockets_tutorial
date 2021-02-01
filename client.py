@@ -1,5 +1,5 @@
 import socket
-import select 
+# import select
 import errno
 import sys
 
@@ -17,6 +17,8 @@ username_header = f"{len(username):<{HEADER_LENGTH}}".encode('utf-8')
 client_socket.send(username_header + username)
 
 while True:
+    # swap message variables to create reader
+    # message = ""
     message = input(f"{my_username} > ")
 
     if message:
@@ -39,7 +41,7 @@ while True:
         print(f"{username} > {message}")
     
     except IOError as e:
-        if e.errno != errno.EAGAIN or e.errno != errno.EWOULDBLOCK:
+        if e.errno != errno.EAGAIN and e.errno != errno.EWOULDBLOCK:
             print('reading error', str(e))
             sys.exit()
         continue
@@ -48,11 +50,6 @@ while True:
         print('General error', str(e))
         sys.exit
         
-
-
-
-
-
 
 """     
 HEADERSIZE = 10
