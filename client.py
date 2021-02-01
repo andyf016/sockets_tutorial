@@ -1,6 +1,13 @@
 import socket
-import pickle
+import select 
+import errno
 
+
+
+
+
+
+"""
 HEADERSIZE = 10
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -29,3 +36,4 @@ while True:
             full_msg = b''
 
     print(full_msg)
+"""
