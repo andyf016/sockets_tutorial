@@ -33,8 +33,21 @@ while True:
             username = client_socket.recv(username_length).decode('utf-8')
 
             message_header = client_socket.recv(HEADER_LENGTH)
-    except:
-        pass
+            message_length = int(message_header.decode('utf-8').strip())
+            message = client_socket.recv(message_length).decode("utf-8")
+        
+        print(f"{username} > {message}")
+    
+    except IOError as e:
+        if e.errno != errno.EAGAIN or e.errno != errno.EWOULDBLOCK:
+            print('reading error', str(e))
+            sys.exit()
+        continue
+
+    except Exception as e:
+        print('General error', str(e))
+        sys.exit
+        
 
 
 
