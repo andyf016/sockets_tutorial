@@ -1,8 +1,15 @@
 import socket
+import select
+
 # import time
-import pickle
+# import pickle
 
 
+
+
+
+
+'''
 HEADERSIZE = 10
 
 # A socket is an endpoint that recieves data
@@ -26,3 +33,4 @@ while True:
 
     # send information to client socket
     clientsocket.send(msg)
+'''
