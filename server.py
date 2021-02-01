@@ -1,8 +1,6 @@
 import socket
-import time
+# import time
 import pickle
-
-
 
 
 HEADERSIZE = 10
@@ -22,7 +20,9 @@ while True:
 
     d = {1: "HEY", 2: "There"}
     msg = pickle.dumps(d)
-    print(msg)
+
+    # Fixed length header
+    msg = bytes(f'{len(msg): < {HEADERSIZE}}', "utf-8") + msg
 
     # send information to client socket
-    clientsocket.send(bytes(msg, "utf-8"))
+    clientsocket.send(msg)
